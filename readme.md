@@ -43,7 +43,7 @@ server.listen(port, () => {
 });
 ```
 
-# differe responses from the server
+# different response strategies from the server
 
 - 1 this will respond only to the client socket that the server received a message from
 
