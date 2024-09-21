@@ -42,6 +42,27 @@ server.listen(port, () => {
   console.log(port, "server started", new Date().toISOString());
 });
 ```
+
+# differe responses from the server
+
+- 1 this will respond only to the client socket that the server received a message from
+
+```node
+socket.emit("messages", ">" + msg);
+```
+
+- 2 this will respond to all sockets connected to the server at the same time
+
+```node
+io.emit("messages", ">" + msg);
+```
+
+- 3 this will respond to all sockets connected to the server with the exception of the socket that sent the message
+
+```node
+socket.broadcast.emit("messages", ">" + msg);
+```
+
 ## client code
 
 ```javascript
@@ -135,4 +156,3 @@ server.listen(port, () => {
 </script>
 
 ```
-

@@ -22,11 +22,14 @@ io.on("connection", (socket) => {
   console.log("user connected");
   socket.on("messages", (msg) => {
     console.log(msg);
-    //send back encho message
+    // send back encho message
     // "messages" is the event name the client will lister too.
-    // ">" + msg echo message back to the client
-    socket.emit("messages", ">" + msg);
+    // ">" + msg echo message back to the clien
+    //socket.emit("messages", ">" + msg);
+    io.emit("messages", ">" + msg);
+    //socket.broadcast.emit("messages", ">" + msg);
   });
+  //listen to disconnection event from the client
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
